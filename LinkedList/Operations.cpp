@@ -1,4 +1,78 @@
 #include"List.hpp"
+#include<unordered_set>
+
+void operations()
+{
+    /* INSERT, FIND, DELETE */
+    {
+        List list = {1, 2, 3, 4, 5};
+        list.print_list();
+
+        insert_node_at_front(list, 6);
+        list.print_list();
+
+        insert_node_at_end(list, 7);
+        list.print_list();
+
+        insert_node_after_given_node(list, 1, 10);
+        list.print_list();
+
+        Node* node = find_node_recursively(list.get_head(), 4);
+        std::cout <<"Found data 4? " <<(node ? "Found" : "Not Found") <<std::endl;
+
+        node = find_nth_node_from_end(list, 3);
+        std::cout <<"nth(3) Node from end: " <<(node ? node->data : -999) <<std::endl;
+
+        node = find_nth_node_recursively(list.get_head(), 3);
+        std::cout <<"nth(3) Node recursively: " <<node->data <<std::endl;
+
+        std::cout <<"Middle of the list: " <<find_middle(list)->data <<std::endl;
+
+        std::cout <<"Find the occurance of 1: " <<find_occurance_of_data_recursively(list.get_head(), 1) <<std::endl;
+
+        delete_node(list, 4);
+        list.print_list();
+
+        delete_node_at_given_position(list, 3);
+        list.print_list();
+    }
+
+    /* REMOVE DUPLICATES FROM SORTED LIST */
+    {
+        List list = {1, 1, 1, 2, 3, 3, 4, 5, 5, 5, 6, 7, 7, 8, 8, 8, 9, 9, 9, 9, 10};
+        list.print_list();
+
+        remove_duplicates_from_sorted_list(list.get_head());
+        list.print_list();
+    }
+
+    /* REMOVE DUPLICATES FROM UNSORTED LIST USING TWO LOOPS */
+    {
+        List list = {1, 2, 1, 1, 7, 3, 4, 9, 5, 5, 6, 2, 7, 8, 8, 7, 9, 3, 9, 9, 10};
+        list.print_list();
+
+        remove_duplicates_from_unsorted_list_using_two_loops(list.get_head());
+        list.print_list();
+    }
+
+    /* REMOVE DUPLICATES FROM UNSORTED LIST USING HASHMAP */
+    {
+        List list = {1, 2, 1, 1, 7, 3, 4, 9, 5, 5, 6, 2, 7, 8, 8, 7, 9, 3, 9, 9, 10};
+        list.print_list();
+
+        remove_duplicates_from_unsorted_list_using_hashmap(list.get_head());
+        list.print_list();
+    }
+
+    /* REMOVE DUPLICATES FROM UNSORTED LIST USING SORTING */
+    {
+        List list = {1, 2, 1, 1, 7, 3, 4, 9, 5, 5, 6, 2, 7, 8, 8, 7, 9, 3, 9, 9, 10};
+        list.print_list();
+
+        remove_duplicates_from_unsorted_list_using_sorting(list.get_head());
+        list.print_list();
+    }
+}
 
 /*
  *--------------------------------------------------------------------
@@ -263,4 +337,83 @@ void delete_node_at_given_position(List& list, int position)
         }
         delete (head);
     }
+}
+
+/*
+ *--------------------------------------------------------------------
+ * REMOVE APIs
+ *--------------------------------------------------------------------
+ */
+/*
+ * Remove the duplicates from a sorted linked list
+ * Time  Complexity: O(n)
+ * Space Complexity: O(1)
+ */
+void remove_duplicates_from_sorted_list(Node* head)
+{
+    while(head && head->next) {
+        if (head->data == head->next->data) {
+            Node* next = head->next->next;
+            delete(head->next);
+            head->next = next;
+        } else {
+            head = head->next;
+        }
+    }
+}
+
+/*
+ * Remove the duplicates from a unsorted linked list using two loops 
+ * Time  Complexity: O(n2)
+ * Space Complexity: O(1)
+ */
+void remove_duplicates_from_unsorted_list_using_two_loops(Node* head)
+{
+    while(head) {
+        Node* prev = head;
+        Node* node = head->next;
+        while(node) {
+            if (head->data == node->data) {
+                prev->next = node->next;
+                delete(node);
+                node = prev->next;
+            } else {
+                prev = node;
+                node = node->next;
+            }
+        }
+        head = head->next;
+    }
+}
+
+/*
+ * Remove the duplicates from a unsorted linked list using hashmap
+ * Time  Complexity: O(n)
+ * Space Complexity: O(n)
+ */
+void remove_duplicates_from_unsorted_list_using_hashmap(Node* head)
+{
+    std::unordered_set<int> hashmap;
+    Node* prev = NULL;
+    while(head) {
+        if (hashmap.find(head->data) == hashmap.end()) {
+            prev = head;
+            hashmap.insert(head->data);
+            head = head->next;
+        } else {
+            prev->next = head->next;
+            delete(head);
+            head = prev->next;
+        }
+    }
+}
+
+//TODO
+/*
+ * Using sorting 
+ * Time  Complexity: O(n(logn))
+ * Space Complexity: O(1)
+ */
+void remove_duplicates_from_unsorted_list_using_sorting(Node* head)
+{
 }

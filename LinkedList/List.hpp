@@ -43,6 +43,8 @@ class List {
  * OPEARTIONS APIs
  */
 
+void operations();
+
 /*
  *--------------------------------------------------------------------
  * INSERT APIs
@@ -73,5 +75,26 @@ int   find_occurance_of_data_recursively(Node* head, int data);
 void delete_node(List& list, int data);
 void delete_node_at_given_position(List& list, int position);
 
+/*
+ *--------------------------------------------------------------------
+ * REMOVE APIs
+ *--------------------------------------------------------------------
+ */
+void remove_duplicates_from_sorted_list(Node* head);
+void remove_duplicates_from_unsorted_list_using_two_loops(Node* head);
+void remove_duplicates_from_unsorted_list_using_hashmap(Node* head);
+void remove_duplicates_from_unsorted_list_using_sorting(Node* head);
+
+/*
+ * LOOP APIs
+ */
+
+void loop();
+
+void print_the_looped_list(Node* head);
+Node* detect_loop_using_hashmap(Node* head);
+Node* detect_loop_using_floyd_cycle_detection_algo(Node* head);
+int   find_lenght_of_the_loop(Node* head);
+void  remove_the_loop(Node* head);
 
 #endif
