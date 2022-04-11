@@ -6,28 +6,20 @@ FLAGS=-std=c++11 -g -Wall
 
 # define executable target
 OBJECTS=Main.o\
-        List.o\
-        Operations.o\
-        LoopDetection.o
+        BST.o
 
-BINARY=List
+BINARY=BST
 
 all: clean $(BINARY)
     
-List: $(OBJECTS) 
+BST: $(OBJECTS) 
 	$(COMPILER) $(FLAGS) $(OBJECTS) -o $(BINARY) 
 
 Main.o:
 	$(COMPILER) -c $(FLAGS) Main.cpp
 
-List.o:
-	$(COMPILER) -c $(FLAGS) List.cpp
-
-Operations.o:
-	$(COMPILER) -c $(FLAGS) Operations.cpp
-
-LoopDetection.o:
-	$(COMPILER) -c $(FLAGS) LoopDetection.cpp
+BST.o:
+	$(COMPILER) -c $(FLAGS) BST.cpp
 
 clean:
 	rm -f $(BINARY) *.o
