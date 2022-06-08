@@ -3,9 +3,9 @@
 /*
  *        50
  *     /      \
- *    30       70
- *   /  \     /  \ 
- *  20   40  60   80
+ *    30      70
+ *   /  \    /  \
+ *  20  40  60  80
  */
 
 int main()
@@ -56,5 +56,18 @@ int main()
     std::cout <<"Rightview:\t";
     RightViewOfTreeUsingQueueRecursive(root);
     std::cout <<std::endl;
+
+    std::cout <<"Leftview:\t";
+    LeftViewOfTreeUsingLevelVariableRecursive(root);
+    std::cout <<std::endl;
+
+    std::cout <<"Rightview:\t";
+    RightViewOfTreeUsingLevelVariableRecursive(root);
+    std::cout <<std::endl;
+
+    std::cout <<"Topview:\t";
+    topView(root);
+    std::cout <<std::endl;
+
     return(0);
 }

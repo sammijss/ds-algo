@@ -6,24 +6,20 @@ FLAGS=-std=c++11 -g -Wall
 
 # define executable target
 OBJECTS=Main.o\
-        Find.o\
-        StockBuySell.o
+        Bit.o
 
-BINARY=Array
+BINARY=Bit
 
 all: clean $(BINARY)
     
-Array: $(OBJECTS) 
+Bit: $(OBJECTS) 
 	$(COMPILER) $(FLAGS) $(OBJECTS) -o $(BINARY)
 
 Main.o:
 	$(COMPILER) -c $(FLAGS) Main.cpp
 
-Find.o:
-	$(COMPILER) -c $(FLAGS) Find.cpp
-
-StockBuySell.o:
-	$(COMPILER) -c $(FLAGS) StockBuySell.cpp
+Bit.o:
+	$(COMPILER) -c $(FLAGS) Bit.cpp
 
 clean:
 	rm -f $(BINARY) *.o

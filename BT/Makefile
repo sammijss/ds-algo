@@ -6,7 +6,9 @@ FLAGS=-std=c++11 -g -Wall
 
 # define executable target
 OBJECTS=Main.o\
-        BT.o
+        BT.o\
+        Traversal.o\
+        View.o
 
 BINARY=BT
 
@@ -20,6 +22,12 @@ Main.o:
 
 BT.o:
 	$(COMPILER) -c $(FLAGS) BT.cpp
+
+Traversal.o:
+	$(COMPILER) -c $(FLAGS) Traversal.cpp
+
+View.o:
+	$(COMPILER) -c $(FLAGS) View.cpp
 
 clean:
 	rm -f $(BINARY) *.o

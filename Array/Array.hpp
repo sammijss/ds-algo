@@ -20,4 +20,8 @@ int  find_smallest_missing_number(int array[], int size);
 
 void find_all_triplets_with_sum_zero(int array[], int size);
 
+void best_time_to_buy_and_sell_one_stock_1(int array[], int size);
+void best_time_to_buy_and_sell_one_stock_2(int array[], int size);
+void best_time_to_buy_and_sell_one_stock_3(int array[], int size);
+
 #endif

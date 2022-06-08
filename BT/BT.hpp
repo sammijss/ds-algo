@@ -34,4 +34,9 @@ void  RightViewOfTreeUsingHashMapRecursive(Node* root);
 void  LeftViewOfTreeUsingQueueRecursive(Node* root);
 void  RightViewOfTreeUsingQueueRecursive(Node* root);
 
+void  LeftViewOfTreeUsingLevelVariableRecursive(Node* root);
+void  RightViewOfTreeUsingLevelVariableRecursive(Node* root);
+
+void topView(Node* root);
+
 #endif
